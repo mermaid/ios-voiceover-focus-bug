@@ -1,0 +1,108 @@
+<html>
+<body>
+  <h1>
+    iOS Safari Voicover Progromatic Focus Bug
+  </h1>
+  <p>
+    There is a bug in iOS voiceover where you cannot programmatically send focus to an element if that element contains
+    HTML. This is important becaues on a SPA, when swapping out the content on the page, we need to re-focus the topmost
+    element and announce it to the user.
+    This issue only occurrs on iOS, Voiceover on MacOS works as expected.
+  </p>
+  <p>
+    The &#x3C;a&#x3E; tags located below the buttons work when you use voice over to click on them. But if you use js to
+    click on them they do not set focus to the elements. So a workaround using links is not feasible.
+  </p>
+
+
+  <h3>
+    Reproduction Steps
+  </h3>
+  <p>
+    on iOS:
+    <ol>
+      <li>Turn on voiceover</li>
+      <li>Navigate to the buttons</li>
+      <li>Click the buttons to focus the divs in voiceover</li>
+    </ol>
+
+    <h3>
+      Expected Result
+    </h3>
+    Voiceover focuses on the appropriate div
+
+    <h3>
+      Actual Result
+    </h3>
+    If the div contains html, voiceover will not focus on the appropriate div simmilar to how it works with the links
+    below the buttons.
+
+    <h3>
+      Additional information
+    </h3>
+
+    <p>
+    </p>
+
+
+
+    <div id="div-without-html" tabindex="0">
+      A div without html
+    </div>
+    <div id="div-with-text-and-html" tabindex="0">
+      direct text child with
+      <b>
+        some html
+      </b>
+    </div>
+
+    <div id="div-with-all-html" tabindex="0">
+      <div>
+        div text child with
+        <b>
+          some html
+        </b>
+      </div>
+    </div>
+
+    <br />
+
+    <button onclick="focusElement('#div-without-html')">
+      focus on text div
+    </button>
+
+    <button onclick="focusElement('#div-with-text-and-html')">
+      focus on text child div with html
+    </button>
+
+    <button onclick="focusElement('#div-with-all-html')">
+      focus on html child div with html
+    </button>
+
+    <br />
+
+    <p>
+      <a href='#div-without-html'>
+        focus on text div
+      </a>
+    </p>
+
+    <p>
+      <a href='#div-with-text-and-html'>
+        focus on text child div with html
+      </a>
+    </p>
+
+    <p>
+      <a href='#div-with-all-html'>
+        focus on html child div with html
+      </a>
+    </p>
+</body>
+<script>
+function focusElement(id) {
+  document.querySelector(id).focus()
+}
+</script>
+
+</html>
