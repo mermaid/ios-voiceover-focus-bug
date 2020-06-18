@@ -5,13 +5,16 @@
   </h1>
   <p>
     There is a bug in iOS voiceover where you cannot programmatically send focus to an element if that element contains
-    HTML. This is important becaues on a SPA, when swapping out the content on the page, we need to re-focus the topmost
+    HTML. This is important becaues on a single page application, when swapping out the content on the page, we need to re-focus the topmost
     element and announce it to the user.
     This issue only occurrs on iOS, Voiceover on MacOS works as expected.
   </p>
   <p>
     The &#x3C;a&#x3E; tags located below the buttons work when you use voice over to click on them. But if you use js to
     click on them they do not set focus to the elements. So a workaround using links is not feasible.
+  </p>
+  <p>
+    <a href="https://github.com/mermaid/ios-voiceover-focus-bug">Link to this projects github repo</a>
   </p>
 
 
@@ -29,22 +32,18 @@
     <h3>
       Expected Result
     </h3>
-    Voiceover focuses on the appropriate div
+    Voiceover focuses on the appropriate div and begins reading it
 
     <h3>
       Actual Result
     </h3>
-    If the div contains html, voiceover will not focus on the appropriate div simmilar to how it works with the links
-    below the buttons.
+    If the div contains html, voiceover will not focus on it or start reading. The Voiceover cursor will remain where it is and re-read the button it is on
+
+    <br/>
 
     <h3>
-      Additional information
+      Test
     </h3>
-
-    <p>
-    </p>
-
-
 
     <div id="div-without-html" tabindex="0">
       A div without html
@@ -98,6 +97,7 @@
         focus on html child div with html
       </a>
     </p>
+
 </body>
 <script>
 function focusElement(id) {
