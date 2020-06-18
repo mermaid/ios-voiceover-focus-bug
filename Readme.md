@@ -1,0 +1,1 @@
+[Link to page describing the iOS voiceover bug](https://mermaid.github.io/ios-voiceover-focus-bug/)
