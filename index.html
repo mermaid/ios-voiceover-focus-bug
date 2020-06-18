@@ -5,13 +5,13 @@
   </h1>
   <p>
     There is a bug in iOS voiceover where you cannot programmatically send focus to an element if that element contains
-    HTML. This is important becaues on a single page application, when swapping out the content on the page, we need to re-focus the topmost
+    HTML. This is important because on a single page application, when swapping out the content on the page, we need to re-focus the topmost
     element and announce it to the user.
-    This issue only occurrs on iOS, Voiceover on MacOS works as expected.
+    This issue only occurs on iOS, Voiceover on MacOS works as expected.
   </p>
   <p>
-    The &#x3C;a&#x3E; tags located below the buttons work when you use voice over to click on them. But if you use js to
-    click on them they do not set focus to the elements. So a workaround using links is not feasible.
+    The &#x3C;a&#x3E; tags located below the buttons as expected work when you use voice over to click on them. But if you use js to
+    click on them they do not set focus to the elements.
   </p>
   <p>
     <a href="https://github.com/mermaid/ios-voiceover-focus-bug">Link to this projects github repo</a>
